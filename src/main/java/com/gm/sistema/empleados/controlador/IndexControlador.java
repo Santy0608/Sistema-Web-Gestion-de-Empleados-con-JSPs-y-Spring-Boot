@@ -25,4 +25,6 @@ public class IndexControlador {
         modelo.put("empleados", empleados);
         return "index";//index.jsp
     }
+
+
 }

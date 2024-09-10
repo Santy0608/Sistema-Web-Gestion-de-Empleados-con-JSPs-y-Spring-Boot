@@ -34,4 +34,9 @@ public class EmpleadoServicio implements IEmpleadoServicio{
     public void eliminarEmpleado(Empleado empleado) {
         empleadoRepositorio.delete(empleado);
     }
+
+    @Override
+    public void eliminarPorId(Integer id) {
+        empleadoRepositorio.deleteById(id);
+    }
 }

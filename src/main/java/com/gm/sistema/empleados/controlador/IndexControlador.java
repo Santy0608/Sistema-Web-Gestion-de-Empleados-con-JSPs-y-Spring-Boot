@@ -23,7 +23,7 @@ public class IndexControlador {
     EmpleadoServicio empleadoServicio;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String iniciar(ModelMap modelo){
+    public String iniciar(ModelMap modelo) {
         List<Empleado> empleados = empleadoServicio.listarEmpleados();
         empleados.forEach((empleado -> System.out.println(empleado.toString())));
         //Compartimos modelo con la vista
@@ -33,32 +33,42 @@ public class IndexControlador {
 
 
     @RequestMapping(value = "/agregar", method = RequestMethod.GET)
-    public String mostrarAgregar(){
+    public String mostrarAgregar() {
         return "agregar"; //agregar.jsp
     }
 
     @RequestMapping(value = "/agregar", method = RequestMethod.POST)
-    public String agregar(@ModelAttribute("empleadoForma") Empleado empleado){
+    public String agregar(@ModelAttribute("empleadoForma") Empleado empleado) {
         System.out.println("Empleado a agregar " + empleado);
         empleadoServicio.guardarEmpleado(empleado);
         return "redirect:/"; //Redirige al path "/"
     }
 
     @RequestMapping(value = "/editar", method = RequestMethod.GET)
-    public String mostrarEditar(@RequestParam int idEmpleado, ModelMap modelo){
+    public String mostrarEditar(@RequestParam int idEmpleado, ModelMap modelo) {
         Empleado empleado = empleadoServicio.buscarEmpleadoPorId(idEmpleado);
         System.out.println("Empleado a Editar " + empleado);
-        modelo.put("empleado",empleado);
+        modelo.put("empleado", empleado);
         return "editar"; //mostrar editar.jsp
     }
 
     @RequestMapping(value = "/editar", method = RequestMethod.POST)
-    public String editar(@ModelAttribute("empleadoForma") Empleado empleado){
+    public String editar(@ModelAttribute("empleadoForma") Empleado empleado) {
         System.out.println("Empleado a guardar (editar): " + empleado);
         empleadoServicio.guardarEmpleado(empleado);
         return "redirect:/"; //Redirige al path "/"
     }
 
-    
+
+
+    @RequestMapping(value = "/eliminar", method = RequestMethod.GET)
+    public String eliminar(@RequestParam int idEmpleado) {
+        Empleado empleado = new Empleado();
+        empleado.setIdEmpleado(idEmpleado);
+        System.out.println("Empleado a eliminar " + empleado + " con el id " + idEmpleado);
+        empleadoServicio.eliminarEmpleado(empleado);
+        return "redirect:/";
+    }
+
 
 }

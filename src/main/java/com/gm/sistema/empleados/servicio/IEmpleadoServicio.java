@@ -12,4 +12,6 @@ public interface IEmpleadoServicio {
     public void guardarEmpleado(Empleado empleado);
 
     public void eliminarEmpleado(Empleado empleado);
+
+    public void eliminarPorId(Integer id);
 }

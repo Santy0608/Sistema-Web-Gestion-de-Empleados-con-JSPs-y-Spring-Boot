@@ -10,6 +10,9 @@
     <c:url value="${application.contextPath}/editar" />
 </c:set>
 
+<c:set var="urlEliminar">
+    <c:url value="${application.contextPath}/eliminar" />
+</c:set>
 
 <div class="container">
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">

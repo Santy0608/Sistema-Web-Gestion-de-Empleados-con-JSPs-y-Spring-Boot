@@ -1,7 +1,6 @@
 <%@ include file="comunes/cabecero.jsp"%>
 <%@ include file="comunes/navegacion.jsp"%>
 
-
 <div class="container">
     <div class="text-center">
 
@@ -16,6 +15,7 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Departamento</th>
                 <th scope="col">Sueldo</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -30,8 +30,16 @@
                         <div>
                             $${empleado.sueldo}
                         </div>
-
-
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-warning btn-sm me-3" >
+                                Editar
+                            </button>
+                            <button type="submit" class="btn btn-danger btn-sm me-3">
+                                Eliminar
+                            </button>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>
@@ -41,6 +49,7 @@
 </div>
 
 <%@ include file="comunes/pie-pagina.jsp"%>
+
 
 </body>
 </html>

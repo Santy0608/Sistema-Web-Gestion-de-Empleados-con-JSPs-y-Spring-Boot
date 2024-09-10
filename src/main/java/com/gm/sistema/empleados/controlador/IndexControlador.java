@@ -8,12 +8,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -45,6 +44,18 @@ public class IndexControlador {
         return "redirect:/"; //Redirige al path "/"
     }
 
+    @GetMapping("/editar")
+    public String mostrarEditar(@RequestParam("id") int id, Model model){
+        Empleado empleado = empleadoServicio.buscarEmpleadoPorId(id);
+        model.addAttribute("empleadoForma", empleado);
+        return "editar";
+    }
 
+    @PutMapping("/editar")
+    public String editar(@ModelAttribute("empleadoForma") Empleado empleado){
+        System.out.println("Empleado a editar: " + empleado);
+        empleadoServicio.guardarEmpleado(empleado);
+        return "redirect:/"; //Redirige al path "/"
+    }
 
 }

@@ -1,7 +1,6 @@
 <%@ include file="comunes/cabecero.jsp"%>
 <%@ include file="comunes/navegacion.jsp"%>
 
-
 <div class="container">
     <div class="text-center">
 
@@ -43,11 +42,11 @@
                             Editar
                         </a>
                         <c:set var="urlEliminar">
-                            <c:url value="${pageContext.request.contextPath}/eliminar">
+                            <c:url value="${application.contextPath}/eliminar">
                                 <c:param name="idEmpleado" value="${empleado.idEmpleado}"/>
                             </c:url>
                         </c:set>
-                        <a href="${urlInicio}" class="btn btn-danger btn-sm me-3">
+                        <a href="${urlEliminar}" class="btn btn-danger btn-sm me-3">
                             Eliminar
                         </a>
                     </td>

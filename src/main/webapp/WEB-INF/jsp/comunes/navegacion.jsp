@@ -6,6 +6,11 @@
     <c:url value="${application.contextPath}/agregar" />
 </c:set>
 
+<c:set var="urlEditar">
+    <c:url value="${application.contextPath}/editar" />
+</c:set>
+
+
 <div class="container">
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">

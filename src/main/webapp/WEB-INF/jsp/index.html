@@ -31,18 +31,16 @@
                             $${empleado.sueldo}
                         </div>
                     </td>
-                    <td>
-                        <div class="text-center">
-                            <form action="/editar" method="get">
-                                <input type="hidden" name="id" value="${empleado.id}"/>
-                                <button type="submit" class="btn btn-warning btn-sm me-3" >
-                                    Editar
-                                </button>
-                            </form>
-                            <button type="submit" class="btn btn-danger btn-sm me-3">
-                                Eliminar
-                            </button>
-                        </div>
+                    <td class="text-center">
+                        <c:set var="urlEditar">
+                          <c:url value="${application.contextPath}/editar">
+                              <c:param name="idEmpleado" value="${empleado.idEmpleado}"/>
+
+                          </c:url>
+                        </c:set>
+                        <a href="${urlEditar}" class="btn btn-warning btn-sm me-3">
+                            Editar
+                        </a>
                     </td>
                 </tr>
             </c:forEach>

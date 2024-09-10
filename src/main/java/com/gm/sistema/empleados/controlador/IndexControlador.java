@@ -44,18 +44,11 @@ public class IndexControlador {
         return "redirect:/"; //Redirige al path "/"
     }
 
-    @GetMapping("/editar")
-    public String mostrarEditar(@RequestParam("id") int id, Model model){
-        Empleado empleado = empleadoServicio.buscarEmpleadoPorId(id);
-        model.addAttribute("empleadoForma", empleado);
-        return "editar";
+    @RequestMapping(value = "/editar", method = RequestMethod.GET)
+    public String mostrarEditar(@RequestParam int idEmpleado, ModelMap modelo){
+        Empleado empleado = empleadoServicio.buscarEmpleadoPorId(idEmpleado);
+        System.out.println("Empleado a Editar " + empleado);
+        modelo.put("empleado",empleado);
+        return "editar"; //mostrar editar.jsp
     }
-
-    @PutMapping("/editar")
-    public String editar(@ModelAttribute("empleadoForma") Empleado empleado){
-        System.out.println("Empleado a editar: " + empleado);
-        empleadoServicio.guardarEmpleado(empleado);
-        return "redirect:/"; //Redirige al path "/"
-    }
-
 }
